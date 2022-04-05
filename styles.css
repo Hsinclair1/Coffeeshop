@@ -3,43 +3,48 @@
     padding: 1%;
 }
 
-.container1{
+.container1 {
     text-align: center;
     padding: 1%;
 }
 
 .main-banner {
-height:30vh;
-width:100%;
-background-image: url("img/beansmain.jpg");
-background-position: center;
-background-repeat: no-repeat;
-background-size:cover;
+    height: 30vh;
+    width: 100%;
+    background-image: url("img/beansmain.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
 .main-header {
     color: white;
     font-family: 'Oswald', sans-serif;
     font-weight: 400;
 }
+
 .navbar {
     position: sticky;
     top: 0;
 }
 
-.card{
-    margin:10%;
+.card {
+    margin: 10%;
 }
+
 .card-body {
     padding: 0;
     padding-top: 5%;
     text-decoration: none !important;
     color: black !important;
 }
+
 .card-title {
     font-size-adjust: 0.90;
     font-family: 'Oswald', sans-serif;
     font-weight: 400;
 }
+
 .price {
     font-size-adjust: 0.75;
     font-family: 'Oswald', sans-serif;
@@ -58,19 +63,19 @@ background-size:cover;
     height: 40vh;
     width: 100%;
     background-image: url("img/coffee/homepage-coffee-shop.jpg");
-    background-position:50% 40%;
+    background-position: 50% 40%;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.image{
-    position:relative;
-    width:286px;
+.image {
+    position: relative;
+    width: 286px;
 }
 
-.image_image{
+.image_image {
     display: block;
-    width:100%;
+    width: 100%;
 }
 
 .image__overlay {
@@ -79,7 +84,7 @@ background-size:cover;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(128,128,128,0.4);
+    background: rgba(128, 128, 128, 0.4);
     color: black;
     font-family: 'Oswald', sans-serif;
     display: flex;
@@ -90,13 +95,14 @@ background-size:cover;
     transition: opacity 0.25s;
 }
 
-.image__overlay--blur{
-    backdrop-filter:blur(5px);
+.image__overlay--blur {
+    backdrop-filter: blur(5px);
 }
 
-.image__overlay:hover{
-    opacity:1;
+.image__overlay:hover {
+    opacity: 1;
 }
+
 .image__title {
     font-size: 2em;
     font-weight: 400;
@@ -104,7 +110,7 @@ background-size:cover;
 
 .image__description {
     font-size: 1.25em;
-    margin-top:0.25em;
+    margin-top: 0.25em;
     font-weight: 200;
 }
 
@@ -113,20 +119,21 @@ body {
     background-size: 94px 94px;
     background-repeat: repeat;
 }
-.products
-{
-    background-color:white;
+
+.products {
+    background-color: white;
 }
 
-.card{
+.card {
     border: none;
 }
 
 .main-banner-products {
-    background-color: rgba(30,58,49,255);
+    background-color: rgba(30, 58, 49, 255);
 }
-.image_coffee{
-    max-width:100%;
+
+.image_coffee {
+    max-width: 100%;
 }
 
 .coffee_products {
@@ -140,7 +147,7 @@ body {
 }
 
 .image_coffee {
-    padding-top:0%;
+    padding-top: 0%;
     width: 480px;
 }
 
@@ -157,13 +164,12 @@ body {
     font-weight: 400;
 }
 
-.productSection p{
+.productSection p {
     font-weight: 200;
 }
 
 @media (min-width: 992px) {
     #navbarNav {
-        
         margin-left: -129.65px;
     }
 }
