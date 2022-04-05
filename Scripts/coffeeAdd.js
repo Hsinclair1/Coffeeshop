@@ -205,7 +205,7 @@ function postIngredient(ingredient) {
     $.ajax({
         url: "https://api-coffeeservice.herokuapp.com/api/ingredients",
         type: "post",
-        headers: { "ApiKey": ApiKey },
+        headers: { 'Access-Control-Allow-Origin': '*', "ApiKey": ApiKey },
         data: { name: ingredient.name, uom: ingredient.uom },
         success: function(result) {
             console.log("success");
