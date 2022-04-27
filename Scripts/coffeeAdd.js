@@ -187,7 +187,9 @@ function ingredientValidation() {
         validationStatus = false;
         document.getElementById("ingredientNameLabel").innerText = "Ingredient Name  (Cannot Be Empty)";
     };
-    console.log(ingredientsArrName);
+    if (ingredientsArrName.find(element => element.name === ingredientName)) {
+        console.log("test")
+    }
     return validationStatus;
 }
 
