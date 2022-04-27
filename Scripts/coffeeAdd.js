@@ -186,6 +186,7 @@ function ingredientValidation() {
 }
 
 function postIngredient(ingredient) {
+    apiKey = document.getElementById("keyNameInput").value;
     let jsonIngredient = JSON.stringify(ingredient);
     console.log(jsonIngredient);
     $.ajax({
@@ -193,7 +194,7 @@ function postIngredient(ingredient) {
         type: "post",
         contentType: "application/json",
         dataType: "json",
-        headers: { "ApiKey": ApiKey },
+        headers: { "ApiKey": apiKey },
         data: jsonIngredient,
         success: function(result) {
             console.log("success");
