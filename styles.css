@@ -168,6 +168,11 @@ body {
     font-weight: 200;
 }
 
+.addCoffeeHeader {
+    justify-content: center;
+    align-items: center;
+}
+
 @media (min-width: 992px) {
     #navbarNav {
         margin-left: -129.65px;

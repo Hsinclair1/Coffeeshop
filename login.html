@@ -48,63 +48,70 @@
     </div>
     <main>
         <div class="container products">
-            <h1 style="padding-top: 2%">Add A Coffee</h1>
+            <div class="flex row addCoffeeHeader p-2">
+                <h1 class="col-6 ">Add A Coffee</h1>
+                <div class="col-6 flex row ">
+                    <label id="keyInputLabel " for="keyNameInput " class="form-label col-2 p-1">Key</label>
+                    <input type="text " class="form-control col-10 " id="keyNameInput ">
+                </div>
+            </div>
+
             <form>
-                <div class="mb-3">
-                    <label id="coffeeNameInputLabel" for="coffeeNameInput" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="coffeeNameInput">
+                <div class="mb-3 ">
+                    <label id="coffeeNameInputLabel " for="coffeeNameInput " class="form-label ">Name</label>
+                    <input type="text " class="form-control " id="coffeeNameInput ">
                 </div>
-                <div class="mb-3">
-                    <label id="coffeeDescriptionInputLabel" for="coffeeDescriptionInput" class="form-label">Description</label>
-                    <input type="text" class="form-control" id="coffeeDescriptionInput">
+                <div class="mb-3 ">
+                    <label id="coffeeDescriptionInputLabel " for="coffeeDescriptionInput " class="form-label ">Description</label>
+                    <input type="text " class="form-control " id="coffeeDescriptionInput ">
                 </div>
-                <div class="mb-3">
-                    <label id="coffeeImageInputLabel" for="coffeeImageInput" class="form-label">Image Url</label>
-                    <input type="text" class="form-control" id="coffeeImageInput">
+                <div class="mb-3 ">
+                    <label id="coffeeImageInputLabel " for="coffeeImageInput " class="form-label ">Image Url</label>
+                    <input type="text " class="form-control " id="coffeeImageInput ">
                 </div>
-                <div class="dropdown" style="margin-bottom: 1%;">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Ingredients</button>
-                    <div id="addIngredientBtn" class="dropdown-menu" aria-labelledby="dropdownMenuButton"></div>
+                <div class="dropdown " style="margin-bottom: 1%; ">
+                    <button class="btn btn-secondary dropdown-toggle " type="button " id="dropdownMenuClickableInside " data-bs-toggle="dropdown " data-bs-auto-close="outside " aria-expanded="false ">Ingredients</button>
+                    <div id="addIngredientBtn " class="dropdown-menu " aria-labelledby="dropdownMenuButton "></div>
                 </div>
-                <div id="editIngredient"></div>
+                <div id="editIngredient "></div>
             </form>
-            <div style="display: flex; justify-content: end;">
-                <input class="btn btn-secondary" type="submit" value="Submit" onclick="submitCoffeeBTN()">
+            <div style="display: flex; justify-content: end; ">
+                <input class="btn btn-secondary " type="submit " value="Submit " onclick="submitCoffeeBTN() ">
             </div>
             <hr>
-            <h1 style="padding-top: 2%">Add An Ingredient</h1>
+            <h1 style="padding-top: 2% ">Add An Ingredient</h1>
             <form>
-                <div class="pb-1 flex row">
-                    <div class="col-6">
-                        <label id="ingredientNameLabel" for="ingredientNameInput" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="ingredientNameInput">
+                <div class="pb-1 flex row ">
+                    <div class="col-6 ">
+                        <label id="ingredientNameLabel " for="ingredientNameInput " class="form-label ">Name</label>
+                        <input type="text " class="form-control " id="ingredientNameInput ">
                     </div>
-                    <div class="col-6">
-                        <label id="ingredientUOMLabel" for="ingredientUOMInput" class="form-label">Uom</label>
-                        <input type="text" class="form-control" id="ingredientUOMInput">
+                    <div class="col-6 ">
+                        <label id="ingredientUOMLabel " for="ingredientUOMInput " class="form-label ">Uom</label>
+                        <input type="text " class="form-control " id="ingredientUOMInput ">
                     </div>
                 </div>
             </form>
-            <div style="display: flex; justify-content: end;" class="pb-3">
-                <input class="btn btn-secondary" type="submit" value="Submit" onclick="submitIngredientBTN()">
+            <div style="display: flex; justify-content: end; " class="pb-3 ">
+                <input class="btn btn-secondary " type="submit " value="Submit " onclick="submitIngredientBTN() ">
             </div>
         </div>
         <section>
-            <div class="baristaimg">
+            <div class="baristaimg ">
             </div>
         </section>
-        <footer class="bg-light text-center text-lg-start">
+        <footer class="bg-light text-center text-lg-start ">
             <!-- Copyright -->
-            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            <div class="text-center p-3 " style="background-color: rgba(0, 0, 0, 0.2); ">
                 © 2021 Copyright:
-                <a class="text-dark" href="https://hsinclair.com/">Bean n' Brew'</a>
+                <a class="text-dark " href="https://hsinclair.com/ ">Bean n' Brew'</a>
             </div>
             <!-- Copyright -->
         </footer>
     </main>
 </body>
-<script src="scripts/accounts.js" async></script>
-<script src="scripts/coffeeAdd.js" async></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="scripts/accounts.js " async></script>
+<script src="scripts/coffeeAdd.js " async></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js "></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js "></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js " integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM " crossorigin="anonymous "></script>

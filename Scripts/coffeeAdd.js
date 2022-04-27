@@ -18,22 +18,6 @@ function getIngredients() {
 
 }
 
-function postCoffee() {
-    $.ajax({
-        url: "https://api-coffeeservice.herokuapp.com/api/ingredients",
-        type: 'post',
-
-        contentType: 'application/x-www-form-urlencoded',
-        data: $(this).serialize(),
-        success: function(data, textStatus, jQxhr) {
-            $('#response pre').html(data);
-        },
-        error: function(jqXhr, textStatus, errorThrown) {
-            console.log(errorThrown);
-        }
-    });
-}
-
 function ingredientBtn(result) {
     ingredientsArr = result;
     console.log(result);
