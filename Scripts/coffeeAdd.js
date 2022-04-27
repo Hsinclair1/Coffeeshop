@@ -4,7 +4,15 @@ let cleanIngredientName = [];
 
 const ApiKey = "h84wyFrgyj1xYbTC402ZdTfL";
 
-window.addEventListener('DOMContentLoaded', getIngredients());
+window.addEventListener('DOMContentLoaded', pageLoaded());
+
+function pageLoaded() {
+    getIngredients();
+    if (localStorage.getItem(apiKey) != null) {
+        let key = localStorage.getItem(apiKey)
+        document.getElementById("keyNameInput").value = key;
+    }
+}
 
 function getIngredients() {
     $.ajax({
@@ -186,7 +194,6 @@ function ingredientValidation() {
 }
 
 function postIngredient(ingredient) {
-    apiKey = document.getElementById("keyNameInput").value;
     let jsonIngredient = JSON.stringify(ingredient);
     console.log(jsonIngredient);
     $.ajax({
@@ -194,7 +201,7 @@ function postIngredient(ingredient) {
         type: "post",
         contentType: "application/json",
         dataType: "json",
-        headers: { "ApiKey": apiKey },
+        headers: { "ApiKey": apiKey() },
         data: jsonIngredient,
         success: function(result) {
             console.log("success");
@@ -203,4 +210,11 @@ function postIngredient(ingredient) {
             console.log("no success");
         }
     });
+}
+
+
+function apiKey() {
+    let key = document.getElementById("keyNameInput").value;
+    localStorage.setItem(apiKey, key);
+    return key;
 }
