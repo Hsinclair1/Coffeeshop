@@ -202,7 +202,8 @@ function ingredientValidation() {
 }
 
 function postIngredient(ingredient) {
-    let cleanIngredient = JSON.stringify(ingredient)
+    let cleanIngredient = JSON.stringify(ingredient);
+    console.log(cleanIngredient);
     $.ajax({
         url: "https://api-coffeeservice.herokuapp.com/api/ingredients",
         type: "post",
