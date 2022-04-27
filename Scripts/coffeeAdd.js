@@ -96,7 +96,6 @@ function removeIngredientUom(result, ingredient) {
     document.getElementById(`${ingredient}ID`).remove();
 }
 
-
 function submitCoffeeBTN() {
     if (coffeeValidation() === false) { return; }
     // let coffee = {
@@ -189,6 +188,7 @@ function ingredientValidation() {
         validationStatus = false;
         document.getElementById("ingredientNameLabel").innerText = "Ingredient Name  (Cannot Be Empty)";
     };
+    console.log(cleanIngredientName);
     return validationStatus;
 }
 
