@@ -28,7 +28,7 @@ function getIngredients() {
 
 function ingredientBtn(result) {
     ingredientsArr = result;
-    console.log(result);
+    //console.log(result);
     let arrCount = 0;
     const seen = new Set();
     const filteredArr = result.filter(el => {
@@ -159,7 +159,6 @@ function addIngredientValidation() {
             document.getElementById(`${element}_ingredientUOM_list`).style = "color: red;";
             validationStatus = false;
         }
-
     });
     return validationStatus;
 }
@@ -167,8 +166,8 @@ function addIngredientValidation() {
 
 function submitIngredientBTN() {
     if (ingredientValidation() === false) { return; }
-    ingredientName = document.getElementById("ingredientUOMInput").value;
-    ingredientUOM = document.getElementById("ingredientNameInput").value;
+    ingredientName = document.getElementById("ingredientNameInput").value;
+    ingredientUOM = document.getElementById("ingredientUOMInput").value;
     let ingredient = {
         name: ingredientName,
         uom: ingredientUOM
