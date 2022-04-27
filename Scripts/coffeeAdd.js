@@ -208,6 +208,7 @@ function postIngredient(ingredient) {
         url: "https://api-coffeeservice.herokuapp.com/api/ingredients",
         type: "post",
         contentType: "application/json",
+        dataType: "json",
         headers: { "ApiKey": ApiKey },
         data: { cleanIngredient },
         success: function(result) {
