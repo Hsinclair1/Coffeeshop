@@ -59,7 +59,7 @@ function ingredientBtn(result) {
 function addIngredientUom(result, ingredient) {
     cleanIngredient = ingredient.split(`_`)[1];
     cleanIngredientName.push(cleanIngredient);
-    //console.log(cleanIngredient);
+    console.log(cleanIngredient);
     const seen = new Set();
     const filteredArrNAME = result.filter(ingredient => ingredient.name == cleanIngredient);
     //console.log(filteredArrNAME);
