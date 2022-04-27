@@ -59,7 +59,6 @@ function ingredientBtn(result) {
 function addIngredientUom(result, ingredient) {
     cleanIngredient = ingredient.split(`_`)[1];
     cleanIngredientName.push(cleanIngredient);
-    console.log(cleanIngredient);
     const seen = new Set();
     const filteredArrNAME = result.filter(ingredient => ingredient.name == cleanIngredient);
     //console.log(filteredArrNAME);
@@ -188,7 +187,7 @@ function ingredientValidation() {
         validationStatus = false;
         document.getElementById("ingredientNameLabel").innerText = "Ingredient Name  (Cannot Be Empty)";
     };
-    console.log(cleanIngredientName);
+    console.log(ingredientsArrName);
     return validationStatus;
 }
 
