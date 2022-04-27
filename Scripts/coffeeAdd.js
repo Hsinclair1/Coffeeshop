@@ -198,6 +198,9 @@ function postIngredient(ingredient) {
         data: jsonIngredient,
         success: function(result) {
             console.log("success");
+        },
+        error: function(result) {
+            console.log("no success");
         }
     });
 }
