@@ -22,7 +22,6 @@ function getIngredients() {
         crossDomain: true,
         success: function(result) {
             ingredientBtn(result);
-            console.log(result);
         },
         error: function() {
             ingredientBtn();
@@ -32,6 +31,7 @@ function getIngredients() {
 }
 
 function filters(result) {
+    console.log(result);
     ingredientsArr = result;
     const seen = new Set();
     const filteredIngredientsByName = result.filter(el => {
