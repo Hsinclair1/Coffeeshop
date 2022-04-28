@@ -1,6 +1,7 @@
 let ingredientsArr = [];
-let ingredientsArrName = [];
-let cleanIngredientName = [];
+let filteredIngredientsByName = [];
+let filteredIngredientsByNameThenUOM = [];
+let cleanSelectedIngredientName = [];
 
 const ApiKey = "h84wyFrgyj1xYbTC402ZdTfL";
 
@@ -26,18 +27,26 @@ function getIngredients() {
 
 }
 
-function ingredientBtn(result) {
+function filters(result) {
     ingredientsArr = result;
-    //console.log(result);
-    let arrCount = 0;
     const seen = new Set();
-    const filteredArr = result.filter(el => {
+    const filteredIngredientsByName = result.filter(el => {
         const duplicate = seen.has(el.name);
         seen.add(el.name);
         return !duplicate;
     });
-    ingredientsArrName = filteredArr;
-    filteredArr.forEach(element => {
+    const seen1 = new Set();
+    const filteredIngredientsByNameThenUOM = filteredIngredientsByName.filter(el => {
+        const duplicate = seen.has(el.uom);
+        seen.add(el.uom);
+        return !duplicate;
+    });
+}
+
+function ingredientBtn(result) {
+    filters(result);
+    let arrCount = 0;
+    filteredIngredientsByName.forEach(element => {
         document.getElementById("addIngredientBtn").innerHTML +=
             `<div class="d-flex flex-row " style="padding-left: 5%;">\
             <input type="checkbox" id="ingredient_${element.name}" col-2" name="ingredient_list" style="align-self: center">\
@@ -56,12 +65,16 @@ function ingredientBtn(result) {
     });
 }
 
+function filteredArrNAME(ingredient) {
+    const filteredArrNAME = result.filter(ingredient => ingredient.name == cleanIngredient);
+}
+
+
+
+
 function addIngredientUom(result, ingredient) {
     cleanIngredient = ingredient.split(`_`)[1];
-    cleanIngredientName.push(cleanIngredient);
-    const seen = new Set();
-    const filteredArrNAME = result.filter(ingredient => ingredient.name == cleanIngredient);
-    //console.log(filteredArrNAME);
+    cleanSelectedIngredientName.push(cleanIngredient);
     document.getElementById("editIngredient").innerHTML +=
         `<div id="${ingredient}ID" class="d-flex flex-row m-1">
         <div id="ingredient_Name" class="col-4" style="display: flex; justify-content: center;">
@@ -77,13 +90,8 @@ function addIngredientUom(result, ingredient) {
             </select>
         </div>                                                    
     </div>`;
-    const seen1 = new Set();
-    const filteredArrNAMEUOM = filteredArrNAME.filter(el => {
-        const duplicate = seen.has(el.uom);
-        seen.add(el.uom);
-        return !duplicate;
-    });
-    filteredArrNAMEUOM.forEach(element => {
+
+    filteredIngredientsByNameThenUOM.forEach(element => {
         document.getElementById(`${cleanIngredient}_ingredientUOM_list`).innerHTML +=
             `<option value="${element.uom}">${element.uom}</option>`;
     });
@@ -91,7 +99,7 @@ function addIngredientUom(result, ingredient) {
 
 function removeIngredientUom(result, ingredient) {
     cleanIngredient = ingredient.split(`_`)[1];
-    cleanIngredientName.pop(cleanIngredient);
+    cleanSelectedIngredientName.pop(cleanIngredient);
     document.getElementById(`${ingredient}ID`).remove();
 }
 
@@ -188,7 +196,8 @@ function ingredientValidation() {
         document.getElementById("ingredientNameLabel").innerText = "Ingredient Name  (Cannot Be Empty)";
     };
     if (ingredientsArrName.find(element => element.name === ingredientName)) {
-        console.log("test")
+        (ingredientsArrName.find(element => element.name === ingredientName))
+
     }
     return validationStatus;
 }
