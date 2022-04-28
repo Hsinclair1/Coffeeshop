@@ -22,6 +22,10 @@ function getIngredients() {
         crossDomain: true,
         success: function(result) {
             ingredientBtn(result);
+            console.log(result);
+        },
+        error: function() {
+            ingredientBtn();
         }
     })
 
@@ -54,6 +58,7 @@ function ingredientBtn(result) {
         </div>\
         <hr id="hr_${arrCount}"style="margin-block: 1%;">`;
         arrCount += 1;
+        console.log(element.name);
     });
     document.getElementById(`hr_${arrCount-1}`).remove();
     $('input[name=ingredient_list]').change(function() {
