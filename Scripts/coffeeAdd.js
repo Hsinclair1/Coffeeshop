@@ -2,6 +2,7 @@ let ingredientsArr = [];
 let filteredIngredientsByName = [];
 let filteredIngredientsByNameThenUOM = [];
 let cleanSelectedIngredientName = [];
+let ingredientNameAndAllUOM = [];
 
 const ApiKey = "h84wyFrgyj1xYbTC402ZdTfL";
 
@@ -9,7 +10,7 @@ window.addEventListener('DOMContentLoaded', pageLoaded());
 
 function pageLoaded() {
     getIngredients();
-    if (localStorage.getItem(apiKey) != null) {
+    if (localStorage.getItem(apiKey) != null) { //checks local storage for saved key
         let key = localStorage.getItem(apiKey)
         document.getElementById("keyNameInput").value = key;
     }
@@ -23,28 +24,43 @@ function getIngredients() {
         success: function(result) {
             ingredientBtn(result);
         },
-        error: function() {
-            ingredientBtn();
+        error: function() { //returns fake list for ddebuging in local
+            console.log("Fake List")
+            ingredientBtn([{ "id": "1f75f6fc-3891-48e3-aa74-a54336f8313e", "name": "Salt", "uom": "g" }, { "id": "53b1678d-45e8-4f5c-9f51-ed3569e91168", "name": "Salt", "uom": "kg" }, { "id": "fa3713b0-003b-4518-b460-c4d4936773cb", "name": "Sugar", "uom": "g" }, { "id": "afa1c245-ebd6-4477-a13d-69609062c6ee", "name": "Sugar", "uom": "kg" }, { "id": "d7e3e794-40a5-4e7f-ba48-b450ff075312", "name": "Sugar", "uom": "kg" }, { "id": "182aa493-6dd9-4927-bc4f-c5d1c0399a84", "name": "Sugar", "uom": "Litre" }, { "id": "de61cdee-e7c9-48d0-934f-d806e5a48bca", "name": "Sugar", "uom": "g" }, { "id": "f151d0cd-8eb2-4727-be72-e2ac30203a42", "name": "Sugar", "uom": "g" }, { "id": "f1182bd7-1369-458e-b1d0-4e90f898d5a4", "name": "Sugar", "uom": "g" }, { "id": "840ce569-6870-4cf6-bfed-60da9a7d9bd6", "name": "Sugar", "uom": "g" }, { "id": "b7abab6c-163d-46f5-970c-c19b25ddd83d", "name": "Sugar", "uom": "g" }, { "id": "77b9b5d8-6450-4d85-b661-4c04c59a5c42", "name": "Sugar", "uom": "g" }]);
         }
     })
-
 }
 
 function filters(result) {
-    console.log(result);
+    //console.log(result);
     ingredientsArr = result;
     const seen = new Set();
-    const filteredIngredientsByName = result.filter(el => {
+    filteredIngredientsByName = result.filter(el => { //filters the results into a list of just ingredient names and ids 
         const duplicate = seen.has(el.name);
         seen.add(el.name);
         return !duplicate;
     });
-    const seen1 = new Set();
-    const filteredIngredientsByNameThenUOM = filteredIngredientsByName.filter(el => {
-        const duplicate = seen.has(el.uom);
-        seen.add(el.uom);
-        return !duplicate;
-    });
+    // console.log(filteredIngredientsByName)
+
+    filteredIngredientsByName.forEach(element => { //a filters the to create a list of names and the uom it can have
+        let filteredElementByUOM = [];
+        let elementWithSameName = [];
+        const seen = new Set();
+        elementWithSameName = ingredientsArr.filter(el => el.name === element.name)
+        filteredElementByUOM = elementWithSameName.filter(el => {
+            const duplicate = seen.has(el.uom);
+            seen.add(el.uom);
+            return !duplicate;
+        });
+        let uomList = [];
+        filteredElementByUOM.forEach(el => uomList.push(el.uom))
+            //console.log(uomList)
+        let ingredient = {
+            name: element.name,
+            UOM: uomList
+        }
+        ingredientNameAndAllUOM.push(ingredient)
+    })
 }
 
 function ingredientBtn(result) {
@@ -58,7 +74,7 @@ function ingredientBtn(result) {
         </div>\
         <hr id="hr_${arrCount}"style="margin-block: 1%;">`;
         arrCount += 1;
-        console.log(element.name);
+        //console.log(element.name);
     });
     document.getElementById(`hr_${arrCount-1}`).remove();
     $('input[name=ingredient_list]').change(function() {
@@ -69,12 +85,6 @@ function ingredientBtn(result) {
         }
     });
 }
-
-function filteredArrNAME(ingredient) {
-    const filteredArrNAME = result.filter(ingredient => ingredient.name == cleanIngredient);
-}
-
-
 
 
 function addIngredientUom(result, ingredient) {
@@ -96,9 +106,12 @@ function addIngredientUom(result, ingredient) {
         </div>                                                    
     </div>`;
 
-    filteredIngredientsByNameThenUOM.forEach(element => {
+    let currentIngredient = ingredientNameAndAllUOM.filter(element => element.name == cleanIngredient)
+        //console.log(currentIngredient)
+    currentIngredient[0].UOM.forEach(element => {
+        //console.log(element)
         document.getElementById(`${cleanIngredient}_ingredientUOM_list`).innerHTML +=
-            `<option value="${element.uom}">${element.uom}</option>`;
+            `<option value="${element}">${element}</option>`;
     });
 }
 
@@ -190,8 +203,8 @@ function ingredientValidation() {
     var validationStatus = true;
     document.getElementById("ingredientNameLabel").innerText = "Ingredient Name";
     document.getElementById("ingredientUOMLabel").innerText = "Ingredient UOM";
-    ingredientName = document.getElementById("ingredientUOMInput").value;
-    ingredientUOM = document.getElementById("ingredientNameInput").value;
+    ingredientUOM = document.getElementById("ingredientUOMInput").value;
+    ingredientName = document.getElementById("ingredientNameInput").value;
     if (ingredientName === "") {
         validationStatus = false;
         document.getElementById("ingredientUOMLabel").innerText = "Ingredient UOM  (Cannot Be Empty)";
@@ -200,15 +213,19 @@ function ingredientValidation() {
         validationStatus = false;
         document.getElementById("ingredientNameLabel").innerText = "Ingredient Name  (Cannot Be Empty)";
     };
-    if (ingredientsArrName.find(element => element.name === ingredientName)) {
-        (ingredientsArrName.find(element => element.name === ingredientName))
-
+    let x = ingredientNameAndAllUOM.find(element => element.name === ingredientName) //get ingredient with the same name
+    if (x != null) {
+        if (x.UOM.find(element => element == ingredientUOM)) { //checks if it alread exisits
+            validationStatus = false;
+        }
     }
+    console.log("validation statue = " + validationStatus);
     return validationStatus;
 }
 
 function postIngredient(ingredient) {
     let jsonIngredient = JSON.stringify(ingredient);
+    jsonIngredient = jsonIngredient.toLowerCase();
     console.log(jsonIngredient);
     $.ajax({
         url: "https://api-coffeeservice.herokuapp.com/api/ingredients",
@@ -218,7 +235,7 @@ function postIngredient(ingredient) {
         headers: { "ApiKey": apiKey() },
         data: jsonIngredient,
         success: function(result) {
-            console.log("success");
+            getIngredients()
         },
         error: function(result) {
             console.log("no success");
