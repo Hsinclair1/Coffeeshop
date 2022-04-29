@@ -107,8 +107,8 @@ function addIngredientUom(result, ingredient) {
             </select>
         </div>                                                    
     </div>`;
-
-    let currentIngredient = ingredientNameAndAllUOM.filter(element => element.name == cleanIngredient)
+    let currentIngredient = null;
+    currentIngredient = ingredientNameAndAllUOM.filter(element => element.name == cleanIngredient)
         //console.log(currentIngredient)
     currentIngredient[0].UOM.forEach(element => {
         //console.log(element)
