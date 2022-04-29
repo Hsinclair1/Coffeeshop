@@ -203,8 +203,8 @@ function ingredientValidation() {
     var validationStatus = true;
     document.getElementById("ingredientNameLabel").innerText = "Ingredient Name";
     document.getElementById("ingredientUOMLabel").innerText = "Ingredient UOM";
-    ingredientUOM = document.getElementById("ingredientUOMInput").value;
-    ingredientName = document.getElementById("ingredientNameInput").value;
+    ingredientUOM = document.getElementById("ingredientUOMInput").value.toLowerCase();
+    ingredientName = document.getElementById("ingredientNameInput").value.toLowerCase();
     if (ingredientName === "") {
         validationStatus = false;
         document.getElementById("ingredientUOMLabel").innerText = "Ingredient UOM  (Cannot Be Empty)";
