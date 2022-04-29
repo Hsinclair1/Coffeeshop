@@ -66,6 +66,7 @@ function filters(result) {
 function ingredientBtn(result) {
     filters(result);
     let arrCount = 0;
+    document.getElementById("addIngredientBtn").innerHTML = "";
     filteredIngredientsByName.forEach(element => {
         document.getElementById("addIngredientBtn").innerHTML +=
             `<div class="d-flex flex-row " style="padding-left: 5%;">\
